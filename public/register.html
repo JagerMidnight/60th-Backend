@@ -88,19 +88,66 @@
             background-color: #e74c3c;
         }
 
+        /* Event Details Box */
+        #eventDetailsBox {
+            background-color: #34495e;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        /* Title Style */
+        #eventDetailsTitle {
+            text-align: center;
+            color: #ecf0f1;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
         /* Display Camp Name */
         #campNameDisplay {
             text-align: center;
             color: #ecf0f1;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Event Details content */
+        #eventDetailsContent {
+            display: none;
+            text-align: center;
+        }
+
+        #eventDetailsContent p {
+            font-size: 16px;
+            color: #bdc3c7;
+        }
+
+        /* Event details not available */
+        #eventDetailsNotAvailable {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- Display the Camp Name from URL -->
-    <p id="campNameDisplay"></p>
+    <!-- Event Details Box -->
+    <div id="eventDetailsBox">
+        <div id="eventDetailsTitle">Event Details</div>
+        <!-- Placeholder for Event details -->
+        <div id="eventDetailsContent">
+            <p><strong>Name:</strong> <span id="eventName"></span></p>
+            <p><strong>Location:</strong> <span id="eventLocation"></span></p>
+            <p><strong>Date:</strong> <span id="eventDate"></span></p>
+            <p><strong>Time:</strong> <span id="eventTime"></span></p>
+            <p><strong>Host:</strong> <span id="eventHost"></span></p>
+        </div>
+        <!-- Display message when details are unavailable -->
+        <div id="eventDetailsNotAvailable" style="display: none;">EVENT DETAILS NOT AVAILABLE</div>
+    </div>
 
     <div class="container">
         <h1>Event Registration</h1>
@@ -155,28 +202,34 @@
         }
 
         // Function to display the Camp Name from the URL
-        function displayCampName() {
-            const campName = getQueryParam('name');
-            if (campName) {
-                const campNameDisplay = document.getElementById('campNameDisplay');
-                campNameDisplay.innerText = `Camp Name: ${decodeURIComponent(campName)}`;  // Display the Camp Name
-            }
-        }
+        function displayEventDetails() {
+            const eventName = getQueryParam('name');
+            const eventLocation = getQueryParam('location');
+            const eventDate = getQueryParam('date');
+            const eventTime = getQueryParam('time');
+            const eventHost = getQueryParam('host');
 
-        // Function to display parent/guardian field if under 18
-        function adjustFormForAge() {
-            const under18 = getQueryParam('under18') === 'true'; // Check if under18 is true in the URL
-            if (under18) {
-                document.getElementById('parentGuardianSection').style.display = 'block';
+            // Check if any event details are missing
+            if (!eventName && !eventLocation && !eventDate && !eventTime && !eventHost) {
+                // If all details are missing, show "EVENT DETAILS NOT AVAILABLE"
+                document.getElementById('eventDetailsNotAvailable').style.display = 'block';
+                document.getElementById('eventDetailsContent').style.display = 'none';
             } else {
-                document.getElementById('parentGuardianSection').style.display = 'none';
+                // If any detail is available, show the event details
+                document.getElementById('eventDetailsNotAvailable').style.display = 'none';
+                document.getElementById('eventDetailsContent').style.display = 'block';
+
+                document.getElementById('eventName').innerText = eventName || 'N/A';
+                document.getElementById('eventLocation').innerText = eventLocation || 'N/A';
+                document.getElementById('eventDate').innerText = eventDate || 'N/A';
+                document.getElementById('eventTime').innerText = eventTime || 'N/A';
+                document.getElementById('eventHost').innerText = eventHost || 'N/A';
             }
         }
 
-        // Call the functions on page load
+        // Call the function on page load
         window.onload = function () {
-            displayCampName();
-            adjustFormForAge();
+            displayEventDetails();
         };
 
         // Submit form function
@@ -202,8 +255,11 @@
                 return;
             }
 
+            // Get email address from environment variable
+            const emailUri = process.env.EMAIL_URI;
+
             // Mailto link for form submission
-            const mailtoLink = `mailto:test@example.com?subject=${getQueryParam('name')} Registration&body=Camp Name: ${getQueryParam('name')}\nYouth's Name: ${youthName}\nPhone: ${phone}\nAddress: ${address}\nCity: ${city}\nProvince: ${province}\nPostal Code: ${postalCode}\nEmergency Contact: ${emergencyContact}\nEmergency Phone: ${emergencyPhone}\nPermission: ${permission}${parentName ? '\nParent/Guardian Name: ' + parentName : ''}`;
+            const mailtoLink = `mailto:${emailUri}?subject=${getQueryParam('name')} Registration&body=Camp Name: ${getQueryParam('name')}%0AYouth's Name: ${youthName}%0APhone: ${phone}%0AAddress: ${address}%0ACity: ${city}%0AProvince: ${province}%0APostal Code: ${postalCode}%0AEmergency Contact: ${emergencyContact}%0AEmergency Phone: ${emergencyPhone}%0APermission: ${permission}${parentName ? '%0AParent/Guardian Name: ' + parentName : ''}`;
 
             // Open the email client with pre-filled info
             window.location.href = mailtoLink;
@@ -214,6 +270,5 @@
             resultMessage.style.display = 'block';
         }
     </script>
-
 </body>
 </html>
