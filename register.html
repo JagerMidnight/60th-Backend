@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #34495e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #ecf0f1;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #7f8c8d;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #resultMessage {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            color: white;
+            display: none;
+            border-radius: 8px;
+        }
+
+        .success {
+            background-color: #2ecc71;
+        }
+
+        .error {
+            background-color: #e74c3c;
+        }
+
+        /* Display Camp Name */
+        #campNameDisplay {
+            text-align: center;
+            color: #ecf0f1;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Display the Camp Name from URL -->
+    <p id="campNameDisplay"></p>
+
+    <div class="container">
+        <h1>Event Registration</h1>
+
+        <!-- Youth Info -->
+        <label for="youthName">Youth's Name</label>
+        <input type="text" id="youthName" placeholder="Enter youth's name" required>
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" placeholder="Enter phone number" required>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" placeholder="Enter address" required>
+
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="Enter city" required>
+
+        <label for="province">Province</label>
+        <input type="text" id="province" placeholder="Enter province" required>
+
+        <label for="postalCode">Postal Code</label>
+        <input type="text" id="postalCode" placeholder="Enter postal code" required>
+
+        <!-- Parent/Guardian Info -->
+        <div id="parentGuardianSection" style="display: none;">
+            <label for="parentName">Parent/Guardian Name</label>
+            <input type="text" id="parentName" placeholder="Enter parent/guardian's name" required>
+        </div>
+
+        <label for="permission">Permission to Participate</label>
+        <textarea id="permission" placeholder="Enter your permission here..." required></textarea>
+
+        <!-- Emergency Contact -->
+        <label for="emergencyContact">Emergency Contact</label>
+        <input type="text" id="emergencyContact" placeholder="Enter emergency contact name" required>
+
+        <label for="emergencyPhone">Emergency Contact Phone</label>
+        <input type="text" id="emergencyPhone" placeholder="Enter emergency contact phone" required>
+
+        <!-- Submit Button -->
+        <button type="submit" onclick="submitForm()">Submit</button>
+
+        <!-- Result message container -->
+        <p id="resultMessage"></p>
+    </div>
+
+    <script>
+        // Function to parse the URL query parameters
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to display the Camp Name from the URL
+        function displayCampName() {
+            const campName = getQueryParam('name');
+            if (campName) {
+                const campNameDisplay = document.getElementById('campNameDisplay');
+                campNameDisplay.innerText = `Camp Name: ${decodeURIComponent(campName)}`;  // Display the Camp Name
+            }
+        }
+
+        // Function to display parent/guardian field if under 18
+        function adjustFormForAge() {
+            const under18 = getQueryParam('under18') === 'true'; // Check if under18 is true in the URL
+            if (under18) {
+                document.getElementById('parentGuardianSection').style.display = 'block';
+            } else {
+                document.getElementById('parentGuardianSection').style.display = 'none';
+            }
+        }
+
+        // Call the functions on page load
+        window.onload = function () {
+            displayCampName();
+            adjustFormForAge();
+        };
+
+        // Submit form function
+        function submitForm() {
+            const resultMessage = document.getElementById('resultMessage');
+            resultMessage.style.display = 'none'; // Hide previous result message
+
+            const youthName = document.getElementById('youthName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const province = document.getElementById('province').value.trim();
+            const postalCode = document.getElementById('postalCode').value.trim();
+            const emergencyContact = document.getElementById('emergencyContact').value.trim();
+            const emergencyPhone = document.getElementById('emergencyPhone').value.trim();
+            const permission = document.getElementById('permission').value.trim();
+            let parentName = document.getElementById('parentName') ? document.getElementById('parentName').value.trim() : '';
+
+            if (!youthName || !phone || !address || !city || !province || !postalCode || !emergencyContact || !emergencyPhone || !permission || (parentName === "" && getQueryParam('under18') === 'true')) {
+                resultMessage.innerText = 'Please fill out all required fields.';
+                resultMessage.className = 'error'; // Show error message
+                resultMessage.style.display = 'block';
+                return;
+            }
+
+            // Mailto link for form submission
+            const mailtoLink = `mailto:test@example.com?subject=${getQueryParam('name')} Registration&body=Camp Name: ${getQueryParam('name')}\nYouth's Name: ${youthName}\nPhone: ${phone}\nAddress: ${address}\nCity: ${city}\nProvince: ${province}\nPostal Code: ${postalCode}\nEmergency Contact: ${emergencyContact}\nEmergency Phone: ${emergencyPhone}\nPermission: ${permission}${parentName ? '\nParent/Guardian Name: ' + parentName : ''}`;
+
+            // Open the email client with pre-filled info
+            window.location.href = mailtoLink;
+
+            // Show success message
+            resultMessage.innerText = 'Form submitted successfully!';
+            resultMessage.className = 'success'; // Show success message
+            resultMessage.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
