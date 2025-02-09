@@ -144,39 +144,36 @@
         </div>
     </div>
 
-    <script>
-        // Grabbing the base URL from environment variable set in Vercel
-        const baseUrl = process.env.RSVP_URL;
+   <script>
+    // Ensure baseUrl is declared and initialized before it's used
+    const baseUrl = "https://your-api-url";  // Replace with your actual URL or method to fetch it
 
-        // Function to generate the URL dynamically based on inputs
-        function generateUrl() {
-            const campName = document.getElementById('campNameInput').value.trim();
-            const location = document.getElementById('campLocation').value.trim();
-            const date = document.getElementById('campDate').value;
-            const time = document.getElementById('campTime').value;
-            const price = document.getElementById('campPrice').value.trim();
-            const host = document.getElementById('campHost').value.trim();
-            const details = document.getElementById('campDetails').value.trim();
+    function generateUrl() {
+        const campName = document.getElementById('campNameInput').value.trim();
+        const location = document.getElementById('campLocation').value.trim();
+        const date = document.getElementById('campDate').value;
+        const time = document.getElementById('campTime').value;
+        const price = document.getElementById('campPrice').value.trim();
+        const host = document.getElementById('campHost').value.trim();
+        const details = document.getElementById('campDetails').value.trim();
 
-            if (!campName || !location || !date || !time || !price || !host || !details) {
-                return; // Exit if any of the required fields are empty
-            }
-
-            // Construct the URL with the camp details (remove base URL prefix and format as requested)
-            const url = `name=${encodeURIComponent(campName)}&location=${encodeURIComponent(location)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&price=${encodeURIComponent(price)}&host=${encodeURIComponent(host)}&details=${encodeURIComponent(details)}`;
-
-            // Update the generated URL field
-            document.getElementById('generatedUrl').value = `${baseUrl}?${url}`;
+        if (!campName || !location || !date || !time || !price || !host || !details) {
+            return; // Exit if any of the required fields are empty
         }
 
-        // Function to copy the generated URL to the clipboard
-        function copyUrl() {
-            const generatedUrl = document.getElementById('generatedUrl');
-            generatedUrl.select();
-            document.execCommand('copy');
-            alert('URL copied to clipboard!');
-        }
-    </script>
+        // Construct the URL with the camp details (ensure baseUrl is available before using it)
+        const url = `name=${encodeURIComponent(campName)}&location=${encodeURIComponent(location)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&price=${encodeURIComponent(price)}&host=${encodeURIComponent(host)}&details=${encodeURIComponent(details)}`;
 
+        // Update the generated URL field
+        document.getElementById('generatedUrl').value = `${baseUrl}?${url}`;
+    }
+
+    function copyUrl() {
+        const generatedUrl = document.getElementById('generatedUrl');
+        generatedUrl.select();
+        document.execCommand('copy');
+        alert('URL copied to clipboard!');
+    }
+</script>
 </body>
 </html>
