@@ -1,0 +1,3 @@
+# Backend for 60th Winnipeg Scout Group
+### The purpose of this repository is to provide a backend for [our website](https://www.60thwpg.com) and [our vercel serverless app](https://60th.vercel.app)
+The code in this repository has scripts that generate a Form for you to fill out. and it also contains analytics information for our website...
