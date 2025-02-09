@@ -20,8 +20,8 @@
   ],
   "routes": [
     {
-      "src": "/api/messageCount",
-      "dest": "/api/messageCount.js"
+      "src": "/api/analytics/messageCount",
+      "dest": "/api/analytics/messageCount.js"
     },
     {
       "src": "/edit",
