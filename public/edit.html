@@ -162,11 +162,11 @@
                 return; // Exit if any of the required fields are empty
             }
 
-            // Construct the URL with the camp details
-            const url = `${baseUrl}/rsvp/form?name=${encodeURIComponent(campName)}&location=${encodeURIComponent(location)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&price=${encodeURIComponent(price)}&host=${encodeURIComponent(host)}&details=${encodeURIComponent(details)}`;
+            // Construct the URL with the camp details (remove base URL prefix and format as requested)
+            const url = `name=${encodeURIComponent(campName)}&location=${encodeURIComponent(location)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&price=${encodeURIComponent(price)}&host=${encodeURIComponent(host)}&details=${encodeURIComponent(details)}`;
 
             // Update the generated URL field
-            document.getElementById('generatedUrl').value = url;
+            document.getElementById('generatedUrl').value = `${baseUrl}?${url}`;
         }
 
         // Function to copy the generated URL to the clipboard
