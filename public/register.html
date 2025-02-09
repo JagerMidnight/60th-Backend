@@ -248,7 +248,7 @@
             const permission = document.getElementById('permission').value.trim();
             let parentName = document.getElementById('parentName') ? document.getElementById('parentName').value.trim() : '';
 
-            if (!youthName || !phone || !address || !city || !province || !postalCode || !emergencyContact || !emergencyPhone || !permission || (parentName === "" && getQueryParam('under18') === 'true')) {
+            if (!youthName || !phone || !address || !city || !province || !postalCode || !emergencyContact || !emergencyPhone || !permission || (parentName === "")) {
                 resultMessage.innerText = 'Please fill out all required fields.';
                 resultMessage.className = 'error'; // Show error message
                 resultMessage.style.display = 'block';
