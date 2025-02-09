@@ -10,7 +10,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/edit/edit.html",
+      "src": "public/edit.html",
       "use": "@vercel/static"
     },
     {
