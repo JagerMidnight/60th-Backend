@@ -8,12 +8,28 @@
     {
       "src": "api/messageCount.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/edit/edit.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/register.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/messageCount",
       "dest": "/api/messageCount.js"
+    },
+    {
+      "src": "/edit",
+      "dest": "/public/edit.html"
+    },
+    {
+      "src": "/register",
+      "dest": "/public/register.html"
     },
     {
       "src": "/(.*)",
