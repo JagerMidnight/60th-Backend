@@ -119,10 +119,13 @@
         <label for="campLocation">Location</label>
         <input type="text" id="campLocation" placeholder="Enter Location" oninput="generateUrl()" required>
 
-        <label for="campDate">Date</label>
-        <input type="date" id="campDate" onchange="generateUrl()" required>
+        <label for="campStartDate">Start Date</label>
+        <input type="date" id="campStartDate" onchange="generateUrl()" required>
 
-        <label for="campTime">Time</label>
+        <label for="campEndDate">End Date</label>
+        <input type="date" id="campEndDate" onchange="generateUrl()" required>
+
+        <label for="campTime">Meeting Time</label>
         <input type="time" id="campTime" onchange="generateUrl()" required>
 
         <label for="campPrice">Price</label>
@@ -144,36 +147,38 @@
         </div>
     </div>
 
-   <script>
-    // Ensure baseUrl is declared and initialized before it's used
-    const baseUrl = "https://60th.vercel.app/register";
+    <script>
+        // Ensure baseUrl is declared and initialized before it's used
+        const baseUrl = "https://60th.vercel.app";
 
-    function generateUrl() {
-        const campName = document.getElementById('campNameInput').value.trim();
-        const location = document.getElementById('campLocation').value.trim();
-        const date = document.getElementById('campDate').value;
-        const time = document.getElementById('campTime').value;
-        const price = document.getElementById('campPrice').value.trim();
-        const host = document.getElementById('campHost').value.trim();
-        const details = document.getElementById('campDetails').value.trim();
+        function generateUrl() {
+            const campName = document.getElementById('campNameInput').value.trim();
+            const location = document.getElementById('campLocation').value.trim();
+            const startDate = document.getElementById('campStartDate').value;
+            const endDate = document.getElementById('campEndDate').value;
+            const meetingTime = document.getElementById('campTime').value;
+            const price = document.getElementById('campPrice').value.trim();
+            const host = document.getElementById('campHost').value.trim();
+            const details = document.getElementById('campDetails').value.trim();
 
-        if (!campName || !location || !date || !time || !price || !host || !details) {
-            return; // Exit if any of the required fields are empty
+            if (!campName || !location || !startDate || !endDate || !meetingTime || !price || !host || !details) {
+                return; // Exit if any of the required fields are empty
+            }
+
+            // Construct the URL with the camp details
+            const url = `name=${encodeURIComponent(campName)}&location=${encodeURIComponent(location)}&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}&meetingTime=${encodeURIComponent(meetingTime)}&price=${encodeURIComponent(price)}&host=${encodeURIComponent(host)}&details=${encodeURIComponent(details)}`;
+
+            // Update the generated URL field
+            document.getElementById('generatedUrl').value = `${baseUrl}?${url}`;
         }
 
-        // Construct the URL with the camp details (ensure baseUrl is available before using it)
-        const url = `name=${encodeURIComponent(campName)}&location=${encodeURIComponent(location)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&price=${encodeURIComponent(price)}&host=${encodeURIComponent(host)}&details=${encodeURIComponent(details)}`;
+        function copyUrl() {
+            const generatedUrl = document.getElementById('generatedUrl');
+            generatedUrl.select();
+            document.execCommand('copy');
+            alert('URL copied to clipboard!');
+        }
+    </script>
 
-        // Update the generated URL field
-        document.getElementById('generatedUrl').value = `${baseUrl}?${url}`;
-    }
-
-    function copyUrl() {
-        const generatedUrl = document.getElementById('generatedUrl');
-        generatedUrl.select();
-        document.execCommand('copy');
-        alert('URL copied to clipboard!');
-    }
-</script>
 </body>
 </html>
