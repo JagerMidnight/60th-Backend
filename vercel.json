@@ -49,10 +49,10 @@
           "src": "/edit/script",
       "dest": "/code/js/edit.js"
     }
-      "src": "register/css",
+      "src": "/register/css",
       "dest": "/code/css/register.css"
     }
-      "src": "edit/css",
+      "src": "/edit/css",
       "dest": "/code/css/edit.css"
     }
   ]
