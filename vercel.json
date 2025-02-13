@@ -17,6 +17,14 @@
       "src": "public/register.html",
       "use": "@vercel/static"
     }
+    {
+      "src": "code/js/register.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "code/js/edit.js",
+      "use": "@vercel/node"
+    },
   ],
   "routes": [
     {
@@ -34,6 +42,18 @@
     {
       "src": "/(.*)",
       "dest": "/public/index.html"
+    }
+          "src": "/register/script",
+      "dest": "/code/js/register.js"
+    }
+          "src": "/edit/script",
+      "dest": "/code/js/edit.js"
+    }
+      "src": "register/css",
+      "dest": "/code/css/register.css"
+    }
+      "src": "edit/css",
+      "dest": "/code/css/edit.css"
     }
   ]
 }
