@@ -19,11 +19,19 @@
     },
     {
       "src": "code/js/register.js",
-      "use": "@vercel/node"
+      "use": "@vercel/static"  // Client-side JS (button presses, etc.)
     },
     {
       "src": "code/js/edit.js",
-      "use": "@vercel/node"
+      "use": "@vercel/static"  // Client-side JS (button presses, etc.)
+    },
+    {
+      "src": "code/css/register.css",
+      "use": "@vercel/static"  // Client-side CSS
+    },
+    {
+      "src": "code/css/edit.css",
+      "use": "@vercel/static"  // Client-side CSS
     }
   ],
   "routes": [
@@ -45,19 +53,19 @@
     },
     {
       "src": "/register/script",
-      "dest": "/code/js/register.js"
+      "dest": "/code/js/register.js"  // Client-side JS (linked in HTML)
     },
     {
       "src": "/edit/script",
-      "dest": "/code/js/edit.js"
+      "dest": "/code/js/edit.js"  // Client-side JS (linked in HTML)
     },
     {
       "src": "/register/css",
-      "dest": "/code/css/register.css"
+      "dest": "/code/css/register.css"  // Client-side CSS (linked in HTML)
     },
     {
       "src": "/edit/css",
-      "dest": "/code/css/edit.css"
+      "dest": "/code/css/edit.css"  // Client-side CSS (linked in HTML)
     }
   ]
 }
