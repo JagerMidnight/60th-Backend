@@ -1,127 +1,132 @@
 /* Styles to use with edit and register (and other pages too!) */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            flex-direction: column;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+}
 
-        .container {
-            background-color: #34495e;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 40px;
-            width: 100%;
-            max-width: 600px;
-        }
+.container {
+    background-color: #34495e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+}
 
-        h1 {
-            text-align: center;
-            color: #ecf0f1;
-            margin-bottom: 20px;
-        }
+h1 {
+    text-align: center;
+    color: #ecf0f1;
+    margin-bottom: 20px;
+}
 
-        label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #ecf0f1;
-        }
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #ecf0f1;
+}
 
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #7f8c8d;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background-color: #34495e;
-            color: #ecf0f1;
-        }
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #7f8c8d;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #34495e;
+    color: #ecf0f1;
+}
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: #3498db;
-            color: white;
-            font-size: 18px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-        button:hover {
-            background-color: #2980b9;
-        }
+button:hover {
+    background-color: #2980b9;
+}
 
-        #resultMessage {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            color: white;
-            display: none;
-            border-radius: 8px;
-        }
+#resultMessage {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    color: white;
+    display: none;
+    border-radius: 8px;
+}
 
-        .success {
-            background-color: #2ecc71;
-        }
+.success {
+    background-color: #2ecc71;
+}
 
-        .error {
-            background-color: #e74c3c;
-        }
+.error {
+    background-color: #e74c3c;
+}
 
-        /* Event Details Box */
-        #eventDetailsBox {
-            background-color: #34495e;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
+/* Event Details Box */
+#eventDetailsBox {
+    background-color: #34495e;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
 
-        /* Title Style */
-        #eventDetailsTitle {
-            text-align: center;
-            color: #ecf0f1;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+/* Title Style */
+#eventDetailsTitle {
+    text-align: center;
+    color: #ecf0f1;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-        /* Display Camp Name */
-        #campNameDisplay {
-            text-align: center;
-            color: #ecf0f1;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+/* Display Camp Name */
+#campNameDisplay {
+    text-align: center;
+    color: #ecf0f1;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 
-        /* Event Details content */
-        #eventDetailsContent {
-            display: none;
-            text-align: center;
-        }
+/* Event Details content */
+#eventDetailsContent {
+    display: none;
+    text-align: center;
+}
 
-        #eventDetailsContent p {
-            font-size: 16px;
-            color: #bdc3c7;
-        }
+#eventDetailsContent p {
+    font-size: 16px;
+    color: #bdc3c7;
+}
 
-        /* Event details not available */
-        #eventDetailsNotAvailable {
-            text-align: center;
-            color: #e74c3c;
-            font-size: 18px;
-            font-weight: bold;
-        }
+/* Event details not available */
+#eventDetailsNotAvailable {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Styling for details pane */
+#eventDetailsBox {
+       float: left;
+}
