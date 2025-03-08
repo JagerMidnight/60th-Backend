@@ -4,71 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Registration Form</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JagerMidnight/60th-Backend@main/code/css/register.css
-">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JagerMidnight/60th-Backend@main/code/css/register.css">
 </head>
 <body>
 
-    <!-- Event Details Box -->
-    <div id="eventDetailsBox">
-        <div id="eventDetailsTitle">Event Details</div>
-        <div id="eventDetailsContent">
-            <p><strong>Name:</strong> <span id="eventName"></span></p>
-            <p><strong>Location:</strong> <span id="eventLocation"></span></p>
-            <p><strong>Date:</strong> <span id="eventDate"></span></p>
-            <p><strong>Time:</strong> <span id="eventTime"></span></p>
-            <p><strong>Host:</strong> <span id="eventHost"></span></p>
-        </div>
-        <!-- Display message when details are unavailable -->
-        <div id="eventDetailsNotAvailable" style="display: none;">EVENT DETAILS NOT AVAILABLE</div>
-    </div>
-
-    <div class="container">
-        <h1>Event Registration</h1>
-
-        <!-- Youth Info -->
-        <label for="youthName">Youth's Name</label>
-        <input type="text" id="youthName" placeholder="Enter youth's name" required>
-
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" placeholder="Enter phone number" required>
-
-        <label for="address">Address</label>
-        <input type="text" id="address" placeholder="Enter address" required>
-
-        <label for="city">City</label>
-        <input type="text" id="city" placeholder="Enter city" required>
-
-        <label for="province">Province</label>
-        <input type="text" id="province" placeholder="Enter province" required>
-
-        <label for="postalCode">Postal Code</label>
-        <input type="text" id="postalCode" placeholder="Enter postal code" required>
-
-        <!-- Parent/Guardian Info -->
-        <div id="parentGuardianSection" style="display: none;">
-            <label for="parentName">Parent/Guardian Name</label>
-            <input type="text" id="parentName" placeholder="Enter parent/guardian's name" required>
+    <!-- Container to hold Event Details and Form -->
+    <div class="form-container">
+        
+        <!-- Event Details Box -->
+        <div id="eventDetailsBox">
+            <div id="eventDetailsTitle">Event Details</div>
+            <div id="eventDetailsContent">
+                <p><strong>Name:</strong> <span id="eventName"></span></p>
+                <p><strong>Location:</strong> <span id="eventLocation"></span></p>
+                <p><strong>Date:</strong> <span id="eventDate"></span></p>
+                <p><strong>Time:</strong> <span id="eventTime"></span></p>
+                <p><strong>Host:</strong> <span id="eventHost"></span></p>
+            </div>
+            <!-- Display message when details are unavailable -->
+            <div id="eventDetailsNotAvailable" style="display: none;">EVENT DETAILS NOT AVAILABLE</div>
         </div>
 
-        <label for="permission">Permission to Participate</label>
-        <textarea id="permission" placeholder="Enter your permission here..." required></textarea>
+        <!-- Registration Form Box -->
+        <div class="container">
+            <h1>Event Registration</h1>
 
-        <!-- Emergency Contact -->
-        <label for="emergencyContact">Emergency Contact</label>
-        <input type="text" id="emergencyContact" placeholder="Enter emergency contact name" required>
+            <!-- Youth Info -->
+            <label for="youthName">Youth's Name</label>
+            <input type="text" id="youthName" placeholder="Enter youth's name" required>
 
-        <label for="emergencyPhone">Emergency Contact Phone</label>
-        <input type="text" id="emergencyPhone" placeholder="Enter emergency contact phone" required>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" placeholder="Enter phone number" required>
 
-        <!-- Submit Button -->
-        <button type="submit" onclick="submitForm()">Submit</button>
+            <label for="address">Address</label>
+            <input type="text" id="address" placeholder="Enter address" required>
 
-        <!-- Result message container -->
-        <p id="resultMessage"></p>
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Enter city" required>
+
+            <label for="province">Province</label>
+            <input type="text" id="province" placeholder="Enter province" required>
+
+            <label for="postalCode">Postal Code</label>
+            <input type="text" id="postalCode" placeholder="Enter postal code" required>
+
+            <!-- Parent/Guardian Info -->
+            <div id="parentGuardianSection" style="display: none;">
+                <label for="parentName">Parent/Guardian Name</label>
+                <input type="text" id="parentName" placeholder="Enter parent/guardian's name" required>
+            </div>
+
+            <label for="permission">Permission to Participate</label>
+            <textarea id="permission" placeholder="Enter your permission here..." required></textarea>
+
+            <!-- Emergency Contact -->
+            <label for="emergencyContact">Emergency Contact</label>
+            <input type="text" id="emergencyContact" placeholder="Enter emergency contact name" required>
+
+            <label for="emergencyPhone">Emergency Contact Phone</label>
+            <input type="text" id="emergencyPhone" placeholder="Enter emergency contact phone" required>
+
+            <!-- Submit Button -->
+            <button type="submit" onclick="submitForm()">Submit</button>
+
+            <!-- Result message container -->
+            <p id="resultMessage"></p>
+        </div>
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/JagerMidnight/60th-Backend@main/code/js/register.js
-"></script>
+    <script src="https://cdn.jsdelivr.net/gh/JagerMidnight/60th-Backend@main/code/js/register.js"></script>
 </body>
 </html>
