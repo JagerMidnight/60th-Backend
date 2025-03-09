@@ -36,7 +36,7 @@
       "dest": "/public/register.html"
     },
     {
-      "src": "/embed/contact-us.html",
+      "src": "/embed/contact-us",
       "dest": "/public/contact-us.html"
     },
     {
