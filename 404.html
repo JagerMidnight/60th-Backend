@@ -1,0 +1,18 @@
+<!DOCTYPE html> <html lang="en"> <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id=title-1>404: Resource not found</title>
+</head>
+<body>
+  <h1 id="title-2">404: Resource not found</h1>
+  <p id="path"></p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const errorCode = 404;
+      const path = window.location.pathname;
+      document.getElementById('path').textContent = `The page "${path}" wasn't found... Let's fix this.`;
+      document.getElementById('title-1').textContent = `${errorCode}: ${path} not found`;
+      document.getElementById('title-2').textContent = `${errorCode}: ${path} not found`;
+    });
+  </script> </body> </html>
