@@ -1,0 +1,51 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+header {
+    background-color: #2c3e50; /* Dark Blue Background */
+    color: #ecf0f1; /* Light Text */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow for a modern feel */
+}
+
+/* Header Content */
+header h1 {
+    font-size: 36px;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Navigation Styling */
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #ecf0f1; /* Light Text for Links */
+    text-decoration: none; /* Removes underline */
+    font-size: 18px;
+    margin: 0 15px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #3498db; /* Light Blue on hover */
+    color: #fff;
+}
+
+/* Optional: Logo/Branding Styles (if any) */
+header .logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ecf0f1;
+    text-transform: uppercase;
+}
