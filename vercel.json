@@ -28,19 +28,19 @@
   ],
   "routes": [
     {
-      "src": "/api/analytics/messageCount",
+      "src": "api/analytics/messageCount",
       "dest": "api/analytics/messageCount.js"
     },
     {
-      "src": "/edit",
+      "src": "edit",
       "dest": "public/edit.html"
     },
     {
-      "src": "/register",
+      "src": "register",
       "dest": "public/register.html"
     },
     {
-      "src": "/embed/contact-us",
+      "src": "contact-us",
       "dest": "public/contact-us.html"
     },
     {
