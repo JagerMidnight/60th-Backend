@@ -6,6 +6,10 @@
       "use": "@vercel/node"
     },
     {
+      "src": "pub/pages/**/*.*",
+      "use": "@vercel/static"
+    },
+    {
       "src": "public/**",
       "use": "@vercel/static"
     }
@@ -17,23 +21,23 @@
     },
     {
       "src": "/edit",
-      "dest": "/public/edit.html"
+      "dest": "/public/pages/edit.html"
     },
     {
       "src": "/register",
-      "dest": "/public/register.html"
+      "dest": "/public/pages/register.html"
     },
     {
       "src": "/contact-us",
-      "dest": "/public/contact-us.html"
+      "dest": "/public/pages/contact-us.html"
     },
     {
       "src": "/404",
-      "dest": "/public/404.html"
+      "dest": "/public/pages/404.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/index.html"
+      "dest": "/public/pages/index.html"
     }
   ]
 }
