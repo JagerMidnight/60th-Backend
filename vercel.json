@@ -29,32 +29,28 @@
   "routes": [
     {
       "src": "/api/analytics/messageCount",
-      "dest": "/api/analytics/messageCount.js"
+      "dest": "api/analytics/messageCount.js"
     },
     {
       "src": "/edit",
-      "dest": "/public/edit.html"
+      "dest": "public/edit.html"
     },
     {
       "src": "/register",
-      "dest": "/public/register.html"
+      "dest": "public/register.html"
     },
     {
       "src": "/embed/contact-us",
-      "dest": "/public/contact-us.html"
+      "dest": "public/contact-us.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/index.html"
-    },
-    {
-      "src": "/404",
-      "dest": "/public/404.html"
+      "dest": "public/index.html"
     },
     {
       "src": "/(.*)",
       "status": 404,
-      "dest": "/public/404.html"
+      "dest": "public/404.html"
     }
   ]
 }
