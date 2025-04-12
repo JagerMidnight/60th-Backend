@@ -1,43 +1,24 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "source": "/",
+      "destination": "/pages/home/index.html"
     },
     {
-      "src": "pub/pages/**/*.*",
-      "use": "@vercel/static"
+      "source": "/:path*/",
+      "destination": "/pages/:path*/index.html"
     },
     {
-      "src": "public/**",
-      "use": "@vercel/static"
+      "source": "/:path*",
+      "destination": "/pages/:path*.html"
     }
   ],
   "routes": [
     {
-      "src": "/api/analytics/messageCount",
-      "dest": "/api/analytics/messageCount.js"
-    },
-    {
-      "src": "/edit",
-      "dest": "/public/pages/edit.html"
-    },
-    {
-      "src": "/register",
-      "dest": "/public/pages/register.html"
-    },
-    {
-      "src": "/contact-us",
-      "dest": "/public/pages/contact-us.html"
-    },
-    {
-      "src": "/404",
-      "dest": "/public/pages/404.html"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/public/pages/index.html"
+      "status": 404,
+      "dest": "/pages/404.html"
     }
   ]
 }
